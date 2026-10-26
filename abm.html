@@ -1,0 +1,1258 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABM Construction Group | Building a Better Tomorrow</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            green: '#065f46',
+                            greenDark: '#022c22',
+                            greenLight: '#059669',
+                            gold: '#eab308',
+                            goldDark: '#ca8a04',
+                            goldLight: '#fde047',
+                            slate: '#0f172a'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .logo-gradient-green {
+            background: linear-gradient(135deg, #065f46 0%, #022c22 100%);
+        }
+        .gold-glow {
+            box-shadow: 0 0 25px -5px rgba(234, 179, 8, 0.3);
+        }
+        .green-glow {
+            box-shadow: 0 0 25px -5px rgba(6, 95, 70, 0.4);
+        }
+        .glass-header {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+        }
+        .glass-card-dark {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-brand-gold selection:text-slate-900">
+
+    <!-- Header / Navbar -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-header border-b border-slate-800/60 transition-all duration-300" id="mainHeader">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Logo -->
+                <a href="#home" class="flex items-center gap-3 group">
+                    <div class="relative w-12 h-12 flex items-center justify-center bg-gradient-to-br from-brand-green to-brand-greenDark rounded-xl p-1.5 shadow-lg border border-brand-gold/40 group-hover:scale-105 transition-transform duration-300">
+                        <!-- Recreated Vector Logo Icon -->
+                        <svg viewBox="0 0 100 100" class="w-full h-full fill-current">
+                            <!-- Roof outline -->
+                            <path d="M 10,65 L 45,25 L 60,38 L 50,47 L 45,43 L 20,65 Z" fill="#eab308"/>
+                            <path d="M 20,65 L 45,43 L 70,65 L 60,65 L 45,52 L 30,65 Z" fill="#ffffff"/>
+                            <!-- Towers -->
+                            <rect x="62" y="15" width="8" height="45" rx="1" fill="#eab308"/>
+                            <rect x="73" y="25" width="8" height="35" rx="1" fill="#10b981"/>
+                            <rect x="84" y="35" width="8" height="25" rx="1" fill="#eab308"/>
+                            <!-- Letters ABM stylized -->
+                            <text x="50" y="85" font-family="'Outfit', sans-serif" font-weight="900" font-size="28" text-anchor="middle" fill="#eab308">ABM</text>
+                        </svg>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-heading text-xl font-extrabold text-white tracking-wider leading-none flex items-center gap-1">
+                            ABM <span class="text-brand-gold font-light">GROUP</span>
+                        </span>
+                        <span class="text-[10px] uppercase tracking-widest text-emerald-400 font-semibold mt-1">
+                            Construction & Real Estate
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden md:flex items-center space-x-1 lg:space-x-2">
+                    <a href="#home" class="px-3 py-2 text-sm font-medium text-slate-200 hover:text-brand-gold hover:bg-slate-800/50 rounded-lg transition-all" data-i18n="nav-home">Home</a>
+                    <a href="#about" class="px-3 py-2 text-sm font-medium text-slate-200 hover:text-brand-gold hover:bg-slate-800/50 rounded-lg transition-all" data-i18n="nav-about">About & Legacy</a>
+                    <a href="#services" class="px-3 py-2 text-sm font-medium text-slate-200 hover:text-brand-gold hover:bg-slate-800/50 rounded-lg transition-all" data-i18n="nav-services">Services</a>
+                    <a href="#projects" class="px-3 py-2 text-sm font-medium text-slate-200 hover:text-brand-gold hover:bg-slate-800/50 rounded-lg transition-all" data-i18n="nav-projects">500+ Projects</a>
+                    <a href="#estimator" class="px-3 py-2 text-sm font-medium text-slate-200 hover:text-brand-gold hover:bg-slate-800/50 rounded-lg transition-all" data-i18n="nav-estimator">Cost Estimator</a>
+                    <a href="#contact" class="px-3 py-2 text-sm font-medium text-slate-200 hover:text-brand-gold hover:bg-slate-800/50 rounded-lg transition-all" data-i18n="nav-contact">Contact</a>
+                </nav>
+
+                <!-- Actions Right (Language & Direct Call) -->
+                <div class="hidden lg:flex items-center gap-3">
+                    <!-- Language Toggle -->
+                    <button id="langToggle" onclick="toggleLanguage()" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold border border-slate-700 transition">
+                        <i class="fa-solid fa-globe text-brand-gold"></i>
+                        <span id="currentLang">EN</span>
+                    </button>
+
+                    <!-- Quick Call CTA -->
+                    <a href="tel:0617529424" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-brand-gold to-brand-goldDark text-slate-950 font-bold text-sm hover:brightness-110 shadow-md shadow-amber-500/20 transition-all">
+                        <i class="fa-solid fa-phone"></i>
+                        <span>061 752 9424</span>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="flex md:hidden items-center gap-2">
+                    <button id="langToggleMobile" onclick="toggleLanguage()" class="px-2.5 py-1.5 rounded-lg bg-slate-800 text-brand-gold text-xs font-bold border border-slate-700">
+                        <span id="currentLangMobile">EN</span>
+                    </button>
+                    <button id="mobileMenuBtn" onclick="toggleMobileMenu()" class="p-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 focus:outline-none">
+                        <i class="fa-solid fa-bars text-xl" id="menuIcon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Nav Menu dropdown -->
+        <div id="mobileMenu" class="hidden md:hidden bg-slate-900/95 border-b border-slate-800 px-4 pt-2 pb-6 space-y-2">
+            <a href="#home" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:text-brand-gold hover:bg-slate-800" data-i18n="nav-home">Home</a>
+            <a href="#about" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:text-brand-gold hover:bg-slate-800" data-i18n="nav-about">About & Legacy</a>
+            <a href="#services" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:text-brand-gold hover:bg-slate-800" data-i18n="nav-services">Services</a>
+            <a href="#projects" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:text-brand-gold hover:bg-slate-800" data-i18n="nav-projects">500+ Projects</a>
+            <a href="#estimator" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:text-brand-gold hover:bg-slate-800" data-i18n="nav-estimator">Cost Estimator</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:text-brand-gold hover:bg-slate-800" data-i18n="nav-contact">Contact</a>
+            
+            <div class="pt-4 border-t border-slate-800 flex flex-col gap-2">
+                <a href="tel:0617529424" class="w-full text-center py-3 rounded-xl bg-brand-gold text-slate-950 font-bold text-sm">
+                    <i class="fa-solid fa-phone mr-2"></i> Call Us: 061 752 9424
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="relative pt-32 pb-20 md:pt-44 md:pb-32 bg-slate-950 overflow-hidden text-white">
+        <!-- Background Grid Pattern & Glowing Elements -->
+        <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#065f46_1px,transparent_1px)] [background-size:24px_24px]"></div>
+        <div class="absolute top-1/4 -left-20 w-96 h-96 bg-emerald-600/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-10 right-0 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Column Text Content -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-green/30 border border-brand-greenLight/40 text-emerald-300 text-xs sm:text-sm font-semibold tracking-wide uppercase">
+                        <span class="w-2 h-2 rounded-full bg-brand-gold animate-pulse"></span>
+                        <span data-i18n="hero-tag">Est. 2010 • Somalia's Premier Builder</span>
+                    </div>
+
+                    <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight tracking-tight">
+                        <span data-i18n="hero-title-1">Building Somalia's</span> <br class="hidden sm:inline"/>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-gold via-amber-300 to-yellow-500" data-i18n="hero-title-2">Future & Skyline</span>
+                    </h1>
+
+                    <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed" data-i18n="hero-desc">
+                        Over 16 years of engineering excellence in Mogadishu and nationwide. With 500+ completed commercial, residential, and infrastructure landmarks, ABM Construction Group turns vision into enduring architectural reality.
+                    </p>
+
+                    <!-- CTAs -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                        <a href="#projects" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-brand-green to-emerald-700 hover:from-emerald-600 hover:to-emerald-800 text-white font-bold text-base shadow-lg shadow-emerald-950/50 hover:shadow-emerald-700/40 transition-all flex items-center justify-center gap-3 group">
+                            <span data-i18n="hero-cta-primary">Explore 500+ Projects</span>
+                            <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                        <a href="#estimator" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-brand-gold font-bold text-base border border-slate-700 hover:border-brand-gold/50 transition-all flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-calculator"></i>
+                            <span data-i18n="hero-cta-secondary">Calculate Build Cost</span>
+                        </a>
+                    </div>
+
+                    <!-- Direct Contact Pills -->
+                    <div class="pt-6 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-xs text-slate-400 border-t border-slate-800/80">
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-location-dot text-brand-gold"></i>
+                            <span>Mogadishu, Somalia</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-envelope text-brand-gold"></i>
+                            <a href="mailto:abm.group.construction@gmail.com" class="hover:text-white transition">abm.group.construction@gmail.com</a>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-phone text-brand-gold"></i>
+                            <a href="tel:0617529424" class="hover:text-white transition">+252 61 752 9424</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column - Visual Showcase Badge Box -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative mx-auto max-w-md lg:max-w-none">
+                        <!-- Decorative Frame -->
+                        <div class="absolute -inset-1 bg-gradient-to-r from-brand-gold via-brand-green to-emerald-500 rounded-3xl blur opacity-30 group-hover:opacity-100 transition duration-1000"></div>
+                        
+                        <div class="relative bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 overflow-hidden shadow-2xl">
+                            <!-- SVG Render of Company Branding Card -->
+                            <div class="flex items-center justify-between pb-6 border-b border-slate-800">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-12 h-12 bg-emerald-950 border border-emerald-600/50 rounded-xl flex items-center justify-center text-brand-gold font-black text-2xl">
+                                        A
+                                    </div>
+                                    <div>
+                                        <h3 class="text-white font-bold text-lg leading-tight">ABM GROUP</h3>
+                                        <p class="text-xs text-amber-400 font-semibold" data-i18n="hero-tagline">BUILDING A BETTER TOMORROW</p>
+                                    </div>
+                                </div>
+                                <span class="bg-amber-400/10 text-brand-gold text-xs font-bold px-2.5 py-1 rounded-md border border-amber-400/20">
+                                    SINCE 2010
+                                </span>
+                            </div>
+
+                            <!-- Live Counter Grid -->
+                            <div class="grid grid-cols-2 gap-4 py-6">
+                                <div class="bg-slate-950/60 p-4 rounded-2xl border border-slate-800/80 text-center">
+                                    <div class="text-3xl sm:text-4xl font-extrabold text-brand-gold font-heading" id="counter-1">500+</div>
+                                    <div class="text-xs text-slate-400 mt-1" data-i18n="stat-projects">Projects Delivered</div>
+                                </div>
+                                <div class="bg-slate-950/60 p-4 rounded-2xl border border-slate-800/80 text-center">
+                                    <div class="text-3xl sm:text-4xl font-extrabold text-emerald-400 font-heading" id="counter-2">16+</div>
+                                    <div class="text-xs text-slate-400 mt-1" data-i18n="stat-years">Years of Legacy</div>
+                                </div>
+                                <div class="bg-slate-950/60 p-4 rounded-2xl border border-slate-800/80 text-center">
+                                    <div class="text-3xl sm:text-4xl font-extrabold text-emerald-400 font-heading">50+</div>
+                                    <div class="text-xs text-slate-400 mt-1" data-i18n="stat-engineers">Master Engineers</div>
+                                </div>
+                                <div class="bg-slate-950/60 p-4 rounded-2xl border border-slate-800/80 text-center">
+                                    <div class="text-3xl sm:text-4xl font-extrabold text-brand-gold font-heading">100%</div>
+                                    <div class="text-xs text-slate-400 mt-1" data-i18n="stat-quality">Safety & Quality</div>
+                                </div>
+                            </div>
+
+                            <div class="bg-gradient-to-r from-emerald-950/80 to-slate-900 p-4 rounded-xl border border-emerald-800/40 flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <i class="fa-solid fa-award text-2xl text-brand-gold"></i>
+                                    <div>
+                                        <p class="text-xs font-bold text-white" data-i18n="hero-cert-title">ISO Certified Civil Contractor</p>
+                                        <p class="text-[11px] text-slate-400" data-i18n="hero-cert-sub">Licensed by Ministry of Public Works</p>
+                                    </div>
+                                </div>
+                                <i class="fa-solid fa-circle-check text-emerald-400"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- COMPANY HISTORY & MILESTONES -->
+    <section id="about" class="py-20 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brand-green font-extrabold text-xs tracking-widest uppercase bg-emerald-50 px-3.5 py-1.5 rounded-full border border-emerald-200" data-i18n="about-badge">
+                    Our History & Journey
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold font-heading text-slate-900 mt-4" data-i18n="about-title">
+                    Sixteen Years of Building Mogadishu & Beyond
+                </h2>
+                <p class="text-slate-600 mt-3 text-base" data-i18n="about-subtitle">
+                    Founded in 2010, ABM Construction Group grew from a local structural engineering firm into one of Somalia's most trusted real estate and infrastructure powerhouses.
+                </p>
+            </div>
+
+            <!-- Timeline Grid -->
+            <div class="relative border-l-2 border-emerald-600/30 ml-4 md:ml-0 md:border-l-0">
+                <!-- Desktop Horizontal Line -->
+                <div class="hidden md:block absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-emerald-600 via-amber-500 to-emerald-600 -translate-y-1/2"></div>
+
+                <div class="grid grid-cols-1 md:grid-cols-5 gap-6 relative">
+                    
+                    <!-- 2010 -->
+                    <div class="relative pl-8 md:pl-0 md:text-center group">
+                        <div class="md:mx-auto w-10 h-10 rounded-full bg-brand-green text-brand-gold font-bold flex items-center justify-center border-4 border-white shadow-md relative z-10 mb-4 group-hover:scale-110 transition">
+                            <i class="fa-solid fa-flag text-xs"></i>
+                        </div>
+                        <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 shadow-sm group-hover:border-brand-green transition">
+                            <span class="text-brand-gold font-black text-lg block font-heading">2010</span>
+                            <h4 class="font-bold text-slate-900 text-sm mt-1" data-i18n="m1-title">Founding in Mogadishu</h4>
+                            <p class="text-xs text-slate-600 mt-2 leading-relaxed" data-i18n="m1-desc">ABM was established with a mission to deliver resilient civil engineering & modern housing solutions.</p>
+                        </div>
+                    </div>
+
+                    <!-- 2014 -->
+                    <div class="relative pl-8 md:pl-0 md:text-center group">
+                        <div class="md:mx-auto w-10 h-10 rounded-full bg-brand-green text-brand-gold font-bold flex items-center justify-center border-4 border-white shadow-md relative z-10 mb-4 group-hover:scale-110 transition">
+                            <i class="fa-solid fa-building text-xs"></i>
+                        </div>
+                        <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 shadow-sm group-hover:border-brand-green transition">
+                            <span class="text-brand-gold font-black text-lg block font-heading">2014</span>
+                            <h4 class="font-bold text-slate-900 text-sm mt-1" data-i18n="m2-title">Commercial Expansion</h4>
+                            <p class="text-xs text-slate-600 mt-2 leading-relaxed" data-i18n="m2-desc">Expanded operations into high-rise commercial centers and governmental facility renovations.</p>
+                        </div>
+                    </div>
+
+                    <!-- 2018 -->
+                    <div class="relative pl-8 md:pl-0 md:text-center group">
+                        <div class="md:mx-auto w-10 h-10 rounded-full bg-brand-green text-brand-gold font-bold flex items-center justify-center border-4 border-white shadow-md relative z-10 mb-4 group-hover:scale-110 transition">
+                            <i class="fa-solid fa-city text-xs"></i>
+                        </div>
+                        <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 shadow-sm group-hover:border-brand-green transition">
+                            <span class="text-brand-gold font-black text-lg block font-heading">2018</span>
+                            <h4 class="font-bold text-slate-900 text-sm mt-1" data-i18n="m3-title">Real Estate Division</h4>
+                            <p class="text-xs text-slate-600 mt-2 leading-relaxed" data-i18n="m3-desc">Launched luxury residential towers and planned gated communities across key Mogadishu districts.</p>
+                        </div>
+                    </div>
+
+                    <!-- 2022 -->
+                    <div class="relative pl-8 md:pl-0 md:text-center group">
+                        <div class="md:mx-auto w-10 h-10 rounded-full bg-brand-green text-brand-gold font-bold flex items-center justify-center border-4 border-white shadow-md relative z-10 mb-4 group-hover:scale-110 transition">
+                            <i class="fa-solid fa-road text-xs"></i>
+                        </div>
+                        <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 shadow-sm group-hover:border-brand-green transition">
+                            <span class="text-brand-gold font-black text-lg block font-heading">2022</span>
+                            <h4 class="font-bold text-slate-900 text-sm mt-1" data-i18n="m4-title">Civil Infrastructure</h4>
+                            <p class="text-xs text-slate-600 mt-2 leading-relaxed" data-i18n="m4-desc">Led key urban road paving, drainage systems, and heavy infrastructure developments.</p>
+                        </div>
+                    </div>
+
+                    <!-- 2026 -->
+                    <div class="relative pl-8 md:pl-0 md:text-center group">
+                        <div class="md:mx-auto w-10 h-10 rounded-full bg-gradient-to-r from-brand-gold to-yellow-600 text-slate-950 font-bold flex items-center justify-center border-4 border-white shadow-md relative z-10 mb-4 group-hover:scale-110 transition">
+                            <i class="fa-solid fa-trophy text-xs"></i>
+                        </div>
+                        <div class="bg-emerald-900 text-white p-5 rounded-2xl border border-emerald-700 shadow-md group-hover:border-brand-gold transition">
+                            <span class="text-brand-gold font-black text-lg block font-heading">TODAY</span>
+                            <h4 class="font-bold text-white text-sm mt-1" data-i18n="m5-title">500+ Projects Benchmark</h4>
+                            <p class="text-xs text-emerald-100 mt-2 leading-relaxed" data-i18n="m5-desc">Celebrating over 500 completed projects with green eco-building standard initiatives.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Core Values -->
+            <div class="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-brand-green/10 text-brand-green flex items-center justify-center text-xl shrink-0">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-900 text-lg" data-i18n="val1-t">Structural Integrity</h3>
+                        <p class="text-slate-600 text-sm mt-1" data-i18n="val1-d">We build to high international standards, utilizing reinforced materials engineered to endure for generations.</p>
+                    </div>
+                </div>
+
+                <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-600 flex items-center justify-center text-xl shrink-0">
+                        <i class="fa-solid fa-clock"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-900 text-lg" data-i18n="val2-t">On-Time Delivery</h3>
+                        <p class="text-slate-600 text-sm mt-1" data-i18n="val2-d">Rigorous project management guarantees your commercial or residential property is delivered strictly on schedule.</p>
+                    </div>
+                </div>
+
+                <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-600 flex items-center justify-center text-xl shrink-0">
+                        <i class="fa-solid fa-handshake"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-900 text-lg" data-i18n="val3-t">Transparent Pricing</h3>
+                        <p class="text-slate-600 text-sm mt-1" data-i18n="val3-d">Clear structural audits and budget breakdowns with zero hidden costs from planning to final handover.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SHOWCASE -->
+    <section id="services" class="py-20 bg-slate-900 text-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brand-gold font-bold text-xs tracking-widest uppercase bg-amber-400/10 px-3.5 py-1.5 rounded-full border border-amber-400/20" data-i18n="services-badge">
+                    Our Expertise
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold font-heading text-white mt-4" data-i18n="services-title">
+                    Comprehensive Construction & Engineering Services
+                </h2>
+                <p class="text-slate-400 mt-3 text-base" data-i18n="services-sub">
+                    From ground-up mega structures to specialized architectural fitting, ABM offers complete end-to-end solutions.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Service 1 -->
+                <div class="glass-card-dark p-8 rounded-3xl hover:border-brand-gold/60 transition group hover:-translate-y-1 duration-300">
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-brand-green to-emerald-900 flex items-center justify-center text-brand-gold text-2xl mb-6 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-city"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3" data-i18n="s1-t">High-Rise & Commercial Buildings</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6" data-i18n="s1-d">
+                        Full-scale construction of multi-story business towers, shopping centers, hotels, and office complexes engineered for durability and elegance.
+                    </p>
+                    <a href="#contact" class="inline-flex items-center gap-2 text-xs font-bold text-brand-gold hover:underline">
+                        <span data-i18n="learn-more">Consult Our Engineers</span> <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="glass-card-dark p-8 rounded-3xl hover:border-brand-gold/60 transition group hover:-translate-y-1 duration-300">
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-brand-green to-emerald-900 flex items-center justify-center text-brand-gold text-2xl mb-6 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-house-chimney"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3" data-i18n="s2-t">Residential & Real Estate</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6" data-i18n="s2-d">
+                        Designing and building luxury private villas, apartment complexes, and gated residential estates across prime Mogadishu locations.
+                    </p>
+                    <a href="#contact" class="inline-flex items-center gap-2 text-xs font-bold text-brand-gold hover:underline">
+                        <span data-i18n="learn-more">Consult Our Engineers</span> <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="glass-card-dark p-8 rounded-3xl hover:border-brand-gold/60 transition group hover:-translate-y-1 duration-300">
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-brand-green to-emerald-900 flex items-center justify-center text-brand-gold text-2xl mb-6 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-compass-drafting"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3" data-i18n="s3-t">Architectural & 3D Design</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6" data-i18n="s3-d">
+                        State-of-the-art 3D BIM modeling, CAD blueprint creation, and structural engineering simulations prior to breaking ground.
+                    </p>
+                    <a href="#contact" class="inline-flex items-center gap-2 text-xs font-bold text-brand-gold hover:underline">
+                        <span data-i18n="learn-more">Consult Our Engineers</span> <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="glass-card-dark p-8 rounded-3xl hover:border-brand-gold/60 transition group hover:-translate-y-1 duration-300">
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-brand-green to-emerald-900 flex items-center justify-center text-brand-gold text-2xl mb-6 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-road"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3" data-i18n="s4-t">Civil Infrastructure & Roads</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6" data-i18n="s4-d">
+                        Heavy civil engineering including asphalt road construction, drainage systems, land clearing, and foundation earthworks.
+                    </p>
+                    <a href="#contact" class="inline-flex items-center gap-2 text-xs font-bold text-brand-gold hover:underline">
+                        <span data-i18n="learn-more">Consult Our Engineers</span> <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="glass-card-dark p-8 rounded-3xl hover:border-brand-gold/60 transition group hover:-translate-y-1 duration-300">
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-brand-green to-emerald-900 flex items-center justify-center text-brand-gold text-2xl mb-6 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-paint-roller"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3" data-i18n="s5-t">Interior Fitting & Renovation</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6" data-i18n="s5-d">
+                        Modernization of existing structures, interior plaster, premium tiling, lighting, gypsum work, and luxury finishing.
+                    </p>
+                    <a href="#contact" class="inline-flex items-center gap-2 text-xs font-bold text-brand-gold hover:underline">
+                        <span data-i18n="learn-more">Consult Our Engineers</span> <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="glass-card-dark p-8 rounded-3xl hover:border-brand-gold/60 transition group hover:-translate-y-1 duration-300">
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-brand-green to-emerald-900 flex items-center justify-center text-brand-gold text-2xl mb-6 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-clipboard-check"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3" data-i18n="s6-t">Project Supervision & Audit</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6" data-i18n="s6-d">
+                        Independent structural auditing, safety assessments, and full turnkey project management for international and local investors.
+                    </p>
+                    <a href="#contact" class="inline-flex items-center gap-2 text-xs font-bold text-brand-gold hover:underline">
+                        <span data-i18n="learn-more">Consult Our Engineers</span> <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTFOLIO / 500+ PROJECTS SHOWCASE -->
+    <section id="projects" class="py-20 bg-slate-50 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <span class="text-brand-green font-extrabold text-xs tracking-widest uppercase bg-emerald-100 px-3.5 py-1.5 rounded-full border border-emerald-300" data-i18n="projects-badge">
+                        Our Landmark Portfolio
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold font-heading text-slate-900 mt-4" data-i18n="projects-title">
+                        Over 500+ Projects Completed Across Somalia
+                    </h2>
+                </div>
+
+                <!-- Filter Tabs -->
+                <div class="flex flex-wrap gap-2 mt-6 md:mt-0">
+                    <button onclick="filterProjects('all')" class="project-tab active px-4 py-2 rounded-xl text-xs font-bold bg-brand-green text-white shadow-sm transition" data-filter="all">All Projects</button>
+                    <button onclick="filterProjects('realestate')" class="project-tab px-4 py-2 rounded-xl text-xs font-bold bg-white text-slate-700 hover:bg-slate-200 border border-slate-200 transition" data-filter="realestate">Real Estate</button>
+                    <button onclick="filterProjects('commercial')" class="project-tab px-4 py-2 rounded-xl text-xs font-bold bg-white text-slate-700 hover:bg-slate-200 border border-slate-200 transition" data-filter="commercial">Commercial</button>
+                    <button onclick="filterProjects('infrastructure')" class="project-tab px-4 py-2 rounded-xl text-xs font-bold bg-white text-slate-700 hover:bg-slate-200 border border-slate-200 transition" data-filter="infrastructure">Infrastructure</button>
+                </div>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projectsGrid">
+                
+                <!-- Project 1 -->
+                <div class="project-card realestate bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-xl border border-slate-200 transition duration-300">
+                    <div class="h-56 bg-slate-800 relative overflow-hidden group">
+                        <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80" alt="Villa Project" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" onerror="this.src='https://placehold.co/600x400/065f46/ffffff?text=ABM+Luxury+Villas'">
+                        <div class="absolute top-4 left-4 bg-emerald-950/80 backdrop-blur-md text-emerald-400 text-xs font-bold px-3 py-1 rounded-full border border-emerald-500/30">
+                            Completed 2024
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs font-semibold text-brand-gold uppercase tracking-wider">Real Estate / Mogadishu</span>
+                        <h3 class="text-lg font-bold text-slate-900 mt-1">Al-Nur Luxury Heights Residency</h3>
+                        <p class="text-slate-600 text-xs mt-2 leading-relaxed">
+                            A 7-story residential complex featuring 28 modern apartments, underground parking, and dual structural security systems.
+                        </p>
+                        <div class="mt-4 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 font-medium">
+                            <span><i class="fa-solid fa-location-dot text-brand-green mr-1"></i> Hodan District</span>
+                            <span><i class="fa-solid fa-ruler-combined text-brand-green mr-1"></i> 4,500 m²</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card commercial bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-xl border border-slate-200 transition duration-300">
+                    <div class="h-56 bg-slate-800 relative overflow-hidden group">
+                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80" alt="Commercial Tower" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" onerror="this.src='https://placehold.co/600x400/065f46/ffffff?text=ABM+Commercial+Tower'">
+                        <div class="absolute top-4 left-4 bg-emerald-950/80 backdrop-blur-md text-emerald-400 text-xs font-bold px-3 py-1 rounded-full border border-emerald-500/30">
+                            Completed 2023
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs font-semibold text-brand-gold uppercase tracking-wider">Commercial / Mogadishu</span>
+                        <h3 class="text-lg font-bold text-slate-900 mt-1">Taleh Business Plaza</h3>
+                        <p class="text-slate-600 text-xs mt-2 leading-relaxed">
+                            Modern 10-story glass-fronted corporate hub equipped with high-speed elevators, backup solar grid, and commercial suites.
+                        </p>
+                        <div class="mt-4 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 font-medium">
+                            <span><i class="fa-solid fa-location-dot text-brand-green mr-1"></i> Taleh Avenue</span>
+                            <span><i class="fa-solid fa-ruler-combined text-brand-green mr-1"></i> 8,200 m²</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card infrastructure bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-xl border border-slate-200 transition duration-300">
+                    <div class="h-56 bg-slate-800 relative overflow-hidden group">
+                        <img src="https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&w=800&q=80" alt="Civil Infrastructure" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" onerror="this.src='https://placehold.co/600x400/065f46/ffffff?text=ABM+Civil+Roads'">
+                        <div class="absolute top-4 left-4 bg-emerald-950/80 backdrop-blur-md text-emerald-400 text-xs font-bold px-3 py-1 rounded-full border border-emerald-500/30">
+                            Completed 2022
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs font-semibold text-brand-gold uppercase tracking-wider">Infrastructure / Banadir</span>
+                        <h3 class="text-lg font-bold text-slate-900 mt-1">Wadajir Arterial Highway & Drainage</h3>
+                        <p class="text-slate-600 text-xs mt-2 leading-relaxed">
+                            12-kilometer dual-carriageway paving project complete with reinforced concrete stormwater channels and solar street lighting.
+                        </p>
+                        <div class="mt-4 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 font-medium">
+                            <span><i class="fa-solid fa-location-dot text-brand-green mr-1"></i> Wadajir Sector</span>
+                            <span><i class="fa-solid fa-road text-brand-green mr-1"></i> 12.5 KM</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card realestate bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-xl border border-slate-200 transition duration-300">
+                    <div class="h-56 bg-slate-800 relative overflow-hidden group">
+                        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80" alt="Private Villa" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" onerror="this.src='https://placehold.co/600x400/065f46/ffffff?text=ABM+Private+Villa'">
+                        <div class="absolute top-4 left-4 bg-emerald-950/80 backdrop-blur-md text-emerald-400 text-xs font-bold px-3 py-1 rounded-full border border-emerald-500/30">
+                            Completed 2023
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs font-semibold text-brand-gold uppercase tracking-wider">Real Estate / Abdiaziz</span>
+                        <h3 class="text-lg font-bold text-slate-900 mt-1">Oceanfront Luxury Villa Estate</h3>
+                        <p class="text-slate-600 text-xs mt-2 leading-relaxed">
+                            Bespoke multi-story coastal residence featuring reinforced anti-corrosion structural design, private pool, and perimeter security.
+                        </p>
+                        <div class="mt-4 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 font-medium">
+                            <span><i class="fa-solid fa-location-dot text-brand-green mr-1"></i> Abdiaziz District</span>
+                            <span><i class="fa-solid fa-ruler-combined text-brand-green mr-1"></i> 1,200 m²</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="project-card commercial bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-xl border border-slate-200 transition duration-300">
+                    <div class="h-56 bg-slate-800 relative overflow-hidden group">
+                        <img src="https://images.unsplash.com/photo-1577495508048-b635879837f1?auto=format&fit=crop&w=800&q=80" alt="Logistics Center" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" onerror="this.src='https://placehold.co/600x400/065f46/ffffff?text=ABM+Logistics+Hub'">
+                        <div class="absolute top-4 left-4 bg-emerald-950/80 backdrop-blur-md text-emerald-400 text-xs font-bold px-3 py-1 rounded-full border border-emerald-500/30">
+                            Completed 2021
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs font-semibold text-brand-gold uppercase tracking-wider">Commercial / Mogadishu Port Zone</span>
+                        <h3 class="text-lg font-bold text-slate-900 mt-1">Somalia Logistics & Warehousing Hub</h3>
+                        <p class="text-slate-600 text-xs mt-2 leading-relaxed">
+                            Heavy-duty industrial warehouse facility engineered with wide-span steel trusses and heavy truck access foundations.
+                        </p>
+                        <div class="mt-4 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 font-medium">
+                            <span><i class="fa-solid fa-location-dot text-brand-green mr-1"></i> Port Area</span>
+                            <span><i class="fa-solid fa-ruler-combined text-brand-green mr-1"></i> 15,000 m²</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="project-card infrastructure bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-xl border border-slate-200 transition duration-300">
+                    <div class="h-56 bg-slate-800 relative overflow-hidden group">
+                        <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80" alt="Civic Complex" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" onerror="this.src='https://placehold.co/600x400/065f46/ffffff?text=ABM+Civic+Building'">
+                        <div class="absolute top-4 left-4 bg-emerald-950/80 backdrop-blur-md text-emerald-400 text-xs font-bold px-3 py-1 rounded-full border border-emerald-500/30">
+                            Completed 2020
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs font-semibold text-brand-gold uppercase tracking-wider">Infrastructure / Civic</span>
+                        <h3 class="text-lg font-bold text-slate-900 mt-1">Banadir Administrative Complex</h3>
+                        <p class="text-slate-600 text-xs mt-2 leading-relaxed">
+                            Turnkey construction of public municipal facilities, conference rooms, and high-security perimeter installations.
+                        </p>
+                        <div class="mt-4 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 font-medium">
+                            <span><i class="fa-solid fa-location-dot text-brand-green mr-1"></i> Hamar Weyne</span>
+                            <span><i class="fa-solid fa-ruler-combined text-brand-green mr-1"></i> 6,800 m²</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE PROJECT COST ESTIMATOR -->
+    <section id="estimator" class="py-20 bg-slate-950 text-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-5 space-y-6">
+                    <span class="text-brand-gold font-bold text-xs tracking-widest uppercase bg-amber-400/10 px-3.5 py-1.5 rounded-full border border-amber-400/20" data-i18n="est-badge">
+                        Instant Dynamic Calculator
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold font-heading text-white leading-tight" data-i18n="est-title">
+                        Estimate Your Construction Budget in Seconds
+                    </h2>
+                    <p class="text-slate-400 text-sm leading-relaxed" data-i18n="est-desc">
+                        Use ABM Group’s interactive estimator to get an instant baseline quote for your upcoming project in Somalia. Select property parameters below:
+                    </p>
+
+                    <div class="space-y-4 pt-2">
+                        <div class="flex items-center gap-3 text-slate-300 text-xs">
+                            <i class="fa-solid fa-circle-check text-emerald-400 text-sm"></i>
+                            <span data-i18n="est-f1">Includes material, labor, structural engineering & foundation</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-slate-300 text-xs">
+                            <i class="fa-solid fa-circle-check text-emerald-400 text-sm"></i>
+                            <span data-i18n="est-f2">Based on current 2026 Mogadishu market material standards</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-slate-300 text-xs">
+                            <i class="fa-solid fa-circle-check text-emerald-400 text-sm"></i>
+                            <span data-i18n="est-f3">Directly transferable into an official project consultation</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Estimator Card -->
+                <div class="lg:col-span-7 bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl">
+                    <form id="estimatorForm" onsubmit="handleEstimatorSubmit(event)" class="space-y-6">
+                        
+                        <!-- Property Type -->
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-3" data-i18n="est-label-type">
+                                1. Select Property / Project Type
+                            </label>
+                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                                <label class="type-option cursor-pointer p-3 rounded-2xl border border-slate-700 bg-slate-950 text-center hover:border-brand-gold transition">
+                                    <input type="radio" name="propType" value="residential" class="hidden" checked onchange="calculateEstimate()">
+                                    <i class="fa-solid fa-house text-brand-gold text-lg block mb-1"></i>
+                                    <span class="text-xs font-bold text-white block">Villa / Home</span>
+                                </label>
+                                <label class="type-option cursor-pointer p-3 rounded-2xl border border-slate-700 bg-slate-950 text-center hover:border-brand-gold transition">
+                                    <input type="radio" name="propType" value="commercial" class="hidden" onchange="calculateEstimate()">
+                                    <i class="fa-solid fa-building text-brand-gold text-lg block mb-1"></i>
+                                    <span class="text-xs font-bold text-white block">Commercial</span>
+                                </label>
+                                <label class="type-option cursor-pointer p-3 rounded-2xl border border-slate-700 bg-slate-950 text-center hover:border-brand-gold transition">
+                                    <input type="radio" name="propType" value="apartment" class="hidden" onchange="calculateEstimate()">
+                                    <i class="fa-solid fa-city text-brand-gold text-lg block mb-1"></i>
+                                    <span class="text-xs font-bold text-white block">Apartment Tower</span>
+                                </label>
+                                <label class="type-option cursor-pointer p-3 rounded-2xl border border-slate-700 bg-slate-950 text-center hover:border-brand-gold transition">
+                                    <input type="radio" name="propType" value="renovation" class="hidden" onchange="calculateEstimate()">
+                                    <i class="fa-solid fa-paint-roller text-brand-gold text-lg block mb-1"></i>
+                                    <span class="text-xs font-bold text-white block">Renovation</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Slider Area -->
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <label class="text-xs font-bold uppercase tracking-wider text-slate-300" data-i18n="est-label-area">
+                                    2. Total Built-Up Area (m²)
+                                </label>
+                                <span class="text-brand-gold font-extrabold text-lg" id="areaValue">300 m²</span>
+                            </div>
+                            <input type="range" id="areaSlider" min="50" max="3000" step="25" value="300" oninput="calculateEstimate()" class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-brand-gold">
+                            <div class="flex justify-between text-[10px] text-slate-500 mt-1">
+                                <span>50 m²</span>
+                                <span>1,500 m²</span>
+                                <span>3,000+ m²</span>
+                            </div>
+                        </div>
+
+                        <!-- Finishing Grade -->
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-3" data-i18n="est-label-grade">
+                                3. Finishing & Material Grade
+                            </label>
+                            <div class="grid grid-cols-3 gap-3">
+                                <label class="grade-option cursor-pointer p-3 rounded-2xl border border-slate-700 bg-slate-950 text-center hover:border-brand-gold transition">
+                                    <input type="radio" name="finishGrade" value="standard" class="hidden" onchange="calculateEstimate()">
+                                    <span class="text-xs font-bold text-white block">Standard</span>
+                                    <span class="text-[10px] text-slate-400 block mt-0.5">High Durability</span>
+                                </label>
+                                <label class="grade-option cursor-pointer p-3 rounded-2xl border border-slate-700 bg-slate-950 text-center hover:border-brand-gold transition">
+                                    <input type="radio" name="finishGrade" value="premium" class="hidden" checked onchange="calculateEstimate()">
+                                    <span class="text-xs font-bold text-emerald-400 block">Premium</span>
+                                    <span class="text-[10px] text-slate-400 block mt-0.5">Recommended</span>
+                                </label>
+                                <label class="grade-option cursor-pointer p-3 rounded-2xl border border-slate-700 bg-slate-950 text-center hover:border-brand-gold transition">
+                                    <input type="radio" name="finishGrade" value="luxury" class="hidden" onchange="calculateEstimate()">
+                                    <span class="text-xs font-bold text-brand-gold block">Luxury</span>
+                                    <span class="text-[10px] text-slate-400 block mt-0.5">Bespoke Imports</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Calculation Output Display -->
+                        <div class="bg-slate-950 p-5 rounded-2xl border border-emerald-900/50 flex flex-col sm:flex-row items-center justify-between gap-4">
+                            <div>
+                                <span class="text-[11px] text-slate-400 uppercase tracking-widest block font-semibold" data-i18n="est-result-label">Estimated Project Cost</span>
+                                <div class="text-2xl sm:text-3xl font-black text-brand-gold font-heading mt-0.5" id="totalEstimateDisplay">
+                                    $105,000 USD
+                                </div>
+                            </div>
+                            <button type="button" onclick="applyEstimateToContact()" class="w-full sm:w-auto px-6 py-3 rounded-xl bg-brand-green hover:bg-emerald-600 text-white font-bold text-xs shadow-md transition flex items-center justify-center gap-2">
+                                <span data-i18n="est-btn">Lock In Quote & Inquire</span>
+                                <i class="fa-solid fa-arrow-down"></i>
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CONTACT & MOGADISHU LOCATION SECTION -->
+    <section id="contact" class="py-20 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brand-green font-extrabold text-xs tracking-widest uppercase bg-emerald-100 px-3.5 py-1.5 rounded-full border border-emerald-300" data-i18n="contact-badge">
+                    Get In Touch
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold font-heading text-slate-900 mt-4" data-i18n="contact-title">
+                    Start Your Construction Journey With ABM Group
+                </h2>
+                <p class="text-slate-600 mt-3 text-base" data-i18n="contact-sub">
+                    Visit our office in Mogadishu or request a formal project proposal from our engineering directors.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                
+                <!-- Direct Information Cards -->
+                <div class="lg:col-span-5 space-y-6">
+                    
+                    <div class="p-6 rounded-3xl bg-slate-50 border border-slate-200 flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-2xl bg-brand-green text-brand-gold flex items-center justify-center text-xl shrink-0">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-900 text-base" data-i18n="c1-t">Headquarter Office</h4>
+                            <p class="text-slate-600 text-xs mt-1 leading-relaxed">
+                                Taleh Avenue, Hodan District<br/>
+                                Mogadishu, Somalia
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="p-6 rounded-3xl bg-slate-50 border border-slate-200 flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-2xl bg-brand-green text-brand-gold flex items-center justify-center text-xl shrink-0">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-900 text-base" data-i18n="c2-t">Direct Phone & WhatsApp</h4>
+                            <p class="text-slate-600 text-xs mt-1">
+                                Call / WhatsApp: <a href="tel:0617529424" class="font-bold text-brand-green hover:underline">061 752 9424</a> / <a href="tel:+252617529424" class="font-bold text-brand-green hover:underline">+252 61 752 9424</a>
+                            </p>
+                            <p class="text-[11px] text-slate-400 mt-1">Saturday – Thursday: 8:00 AM – 6:00 PM</p>
+                        </div>
+                    </div>
+
+                    <div class="p-6 rounded-3xl bg-slate-50 border border-slate-200 flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-2xl bg-brand-green text-brand-gold flex items-center justify-center text-xl shrink-0">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-900 text-base" data-i18n="c3-t">Official Email</h4>
+                            <p class="text-slate-600 text-xs mt-1">
+                                <a href="mailto:abm.group.construction@gmail.com" class="font-bold text-brand-green hover:underline">abm.group.construction@gmail.com</a>
+                            </p>
+                            <p class="text-[11px] text-slate-400 mt-1">Fast response within 24 hours</p>
+                        </div>
+                    </div>
+
+                    <!-- Mogadishu Map Graphic Mockup -->
+                    <div class="relative h-48 rounded-3xl overflow-hidden border border-slate-200 bg-slate-900 flex items-center justify-center text-center p-4">
+                        <div class="absolute inset-0 opacity-40 bg-[radial-gradient(#10b981_1px,transparent_1px)] [background-size:16px_16px]"></div>
+                        <div class="relative z-10">
+                            <i class="fa-solid fa-map-location-dot text-brand-gold text-3xl mb-2"></i>
+                            <h5 class="text-white font-bold text-sm">Mogadishu Headquarters</h5>
+                            <p class="text-xs text-slate-400 mt-0.5">Serving Banadir Region & Nationwide Somalia</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Contact Form -->
+                <div class="lg:col-span-7 bg-slate-50 border border-slate-200 p-8 rounded-3xl shadow-sm">
+                    <form id="contactForm" onsubmit="submitContactForm(event)" class="space-y-4">
+                        
+                        <!-- Form Notification Box -->
+                        <div id="formAlert" class="hidden p-4 rounded-xl text-xs font-semibold"></div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1.5" data-i18n="form-name">Your Full Name *</label>
+                                <input type="text" id="contactName" required placeholder="e.g. Hassan Ahmed" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:border-brand-green text-xs">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1.5" data-i18n="form-phone">Phone Number *</label>
+                                <input type="tel" id="contactPhone" required placeholder="061 xxx xxxx" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:border-brand-green text-xs">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1.5" data-i18n="form-email">Email Address</label>
+                                <input type="email" id="contactEmail" placeholder="name@example.com" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:border-brand-green text-xs">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1.5" data-i18n="form-service">Service Required</label>
+                                <select id="contactService" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:border-brand-green text-xs bg-white">
+                                    <option value="General Construction">General Construction</option>
+                                    <option value="Real Estate Build">Real Estate Development</option>
+                                    <option value="Commercial High-Rise">Commercial High-Rise</option>
+                                    <option value="Civil Infrastructure">Civil Infrastructure</option>
+                                    <option value="Renovation & Fitting">Renovation & Fitting</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1.5" data-i18n="form-msg">Project Details / Requirements *</label>
+                            <textarea id="contactMessage" rows="5" required placeholder="Describe your project, timeline, location in Somalia..." class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:border-brand-green text-xs"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-brand-green to-emerald-800 hover:from-emerald-700 hover:to-emerald-900 text-white font-bold text-sm shadow-md transition flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-paper-plane"></i>
+                            <span data-i18n="form-submit">Send Official Request</span>
+                        </button>
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-950 text-white pt-16 pb-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800/80">
+                
+                <!-- Brand Info -->
+                <div class="lg:col-span-2 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-brand-green rounded-xl p-1 flex items-center justify-center border border-brand-gold/40">
+                            <span class="font-black text-brand-gold text-lg">A</span>
+                        </div>
+                        <span class="font-heading text-xl font-extrabold text-white">
+                            ABM <span class="text-brand-gold font-light">GROUP</span>
+                        </span>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed max-w-sm" data-i18n="footer-desc">
+                        ABM Construction Group is Somalia’s leading engineering and real estate construction firm. Establishing structural standards since 2010. Over 500 projects completed nationwide.
+                    </p>
+                    <p class="text-xs font-bold text-amber-400 tracking-wider">
+                        "BUILDING A BETTER TOMORROW"
+                    </p>
+                </div>
+
+                <!-- Navigation Quick Links -->
+                <div>
+                    <h5 class="text-xs font-bold uppercase tracking-wider text-white mb-4" data-i18n="f-links">Quick Links</h5>
+                    <ul class="space-y-2.5 text-xs text-slate-400">
+                        <li><a href="#home" class="hover:text-brand-gold transition">Home</a></li>
+                        <li><a href="#about" class="hover:text-brand-gold transition">Our 16-Year Legacy</a></li>
+                        <li><a href="#services" class="hover:text-brand-gold transition">Engineering Services</a></li>
+                        <li><a href="#projects" class="hover:text-brand-gold transition">500+ Projects Gallery</a></li>
+                        <li><a href="#estimator" class="hover:text-brand-gold transition">Cost Estimator Tool</a></li>
+                    </ul>
+                </div>
+
+                <!-- Services List -->
+                <div>
+                    <h5 class="text-xs font-bold uppercase tracking-wider text-white mb-4" data-i18n="f-services">Services</h5>
+                    <ul class="space-y-2.5 text-xs text-slate-400">
+                        <li><span>Commercial Towers</span></li>
+                        <li><span>Residential Villas</span></li>
+                        <li><span>3D CAD Modeling</span></li>
+                        <li><span>Civil Infrastructure</span></li>
+                        <li><span>Renovation & Audit</span></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Footer Info -->
+                <div>
+                    <h5 class="text-xs font-bold uppercase tracking-wider text-white mb-4" data-i18n="f-contact">Headquarters</h5>
+                    <ul class="space-y-2.5 text-xs text-slate-400">
+                        <li class="flex items-center gap-2">
+                            <i class="fa-solid fa-location-dot text-brand-gold"></i>
+                            <span>Taleh, Hodan, Mogadishu</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa-solid fa-phone text-brand-gold"></i>
+                            <a href="tel:0617529424" class="hover:text-white">061 752 9424</a>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa-solid fa-envelope text-brand-gold"></i>
+                            <a href="mailto:abm.group.construction@gmail.com" class="hover:text-white truncate">abm.group.construction@gmail.com</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- Copyright line -->
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+                <p>© 2010 - 2026 ABM Construction Group. All rights reserved.</p>
+                <p>Mogadishu, Banadir Region, Somalia</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE JAVASCRIPT LOGIC -->
+    <script>
+        // Language Translations Data Object
+        const translations = {
+            en: {
+                "nav-home": "Home",
+                "nav-about": "About & Legacy",
+                "nav-services": "Services",
+                "nav-projects": "500+ Projects",
+                "nav-estimator": "Cost Estimator",
+                "nav-contact": "Contact",
+                "hero-tag": "Est. 2010 • Somalia's Premier Builder",
+                "hero-title-1": "Building Somalia's",
+                "hero-title-2": "Future & Skyline",
+                "hero-desc": "Over 16 years of engineering excellence in Mogadishu and nationwide. With 500+ completed commercial, residential, and infrastructure landmarks, ABM Construction Group turns vision into enduring architectural reality.",
+                "hero-cta-primary": "Explore 500+ Projects",
+                "hero-cta-secondary": "Calculate Build Cost",
+                "hero-tagline": "BUILDING A BETTER TOMORROW",
+                "stat-projects": "Projects Delivered",
+                "stat-years": "Years of Legacy",
+                "stat-engineers": "Master Engineers",
+                "stat-quality": "Safety & Quality",
+                "hero-cert-title": "ISO Certified Civil Contractor",
+                "hero-cert-sub": "Licensed by Ministry of Public Works",
+                "about-badge": "Our History & Journey",
+                "about-title": "Sixteen Years of Building Mogadishu & Beyond",
+                "about-subtitle": "Founded in 2010, ABM Construction Group grew from a local structural engineering firm into one of Somalia's most trusted real estate and infrastructure powerhouses.",
+                "m1-title": "Founding in Mogadishu",
+                "m1-desc": "ABM was established with a mission to deliver resilient civil engineering & modern housing solutions.",
+                "m2-title": "Commercial Expansion",
+                "m2-desc": "Expanded operations into high-rise commercial centers and governmental facility renovations.",
+                "m3-title": "Real Estate Division",
+                "m3-desc": "Launched luxury residential towers and planned gated communities across key Mogadishu districts.",
+                "m4-title": "Civil Infrastructure",
+                "m4-desc": "Led key urban road paving, drainage systems, and heavy infrastructure developments.",
+                "m5-title": "500+ Projects Benchmark",
+                "m5-desc": "Celebrating over 500 completed projects with green eco-building standard initiatives.",
+                "val1-t": "Structural Integrity",
+                "val1-d": "We build to high international standards, utilizing reinforced materials engineered to endure for generations.",
+                "val2-t": "On-Time Delivery",
+                "val2-d": "Rigorous project management guarantees your commercial or residential property is delivered strictly on schedule.",
+                "val3-t": "Transparent Pricing",
+                "val3-d": "Clear structural audits and budget breakdowns with zero hidden costs from planning to final handover.",
+                "services-badge": "Our Expertise",
+                "services-title": "Comprehensive Construction & Engineering Services",
+                "services-sub": "From ground-up mega structures to specialized architectural fitting, ABM offers complete end-to-end solutions.",
+                "s1-t": "High-Rise & Commercial Buildings",
+                "s1-d": "Full-scale construction of multi-story business towers, shopping centers, hotels, and office complexes engineered for durability.",
+                "s2-t": "Residential & Real Estate",
+                "s2-d": "Designing and building luxury private villas, apartment complexes, and gated residential estates across prime Mogadishu locations.",
+                "s3-t": "Architectural & 3D Design",
+                "s3-d": "State-of-the-art 3D BIM modeling, CAD blueprint creation, and structural engineering simulations prior to breaking ground.",
+                "s4-t": "Civil Infrastructure & Roads",
+                "s4-d": "Heavy civil engineering including asphalt road construction, drainage systems, land clearing, and foundation earthworks.",
+                "s5-t": "Interior Fitting & Renovation",
+                "s5-d": "Modernization of existing structures, interior plaster, premium tiling, lighting, gypsum work, and luxury finishing.",
+                "s6-t": "Project Supervision & Audit",
+                "s6-d": "Independent structural auditing, safety assessments, and full turnkey project management for international and local investors.",
+                "learn-more": "Consult Our Engineers",
+                "projects-badge": "Our Landmark Portfolio",
+                "projects-title": "Over 500+ Projects Completed Across Somalia",
+                "est-badge": "Instant Dynamic Calculator",
+                "est-title": "Estimate Your Construction Budget in Seconds",
+                "est-desc": "Use ABM Group’s interactive estimator to get an instant baseline quote for your upcoming project in Somalia.",
+                "est-f1": "Includes material, labor, structural engineering & foundation",
+                "est-f2": "Based on current 2026 Mogadishu market material standards",
+                "est-f3": "Directly transferable into an official project consultation",
+                "est-label-type": "1. Select Property / Project Type",
+                "est-label-area": "2. Total Built-Up Area (m²)",
+                "est-label-grade": "3. Finishing & Material Grade",
+                "est-result-label": "Estimated Project Cost",
+                "est-btn": "Lock In Quote & Inquire",
+                "contact-badge": "Get In Touch",
+                "contact-title": "Start Your Construction Journey With ABM Group",
+                "contact-sub": "Visit our office in Mogadishu or request a formal project proposal from our engineering directors.",
+                "c1-t": "Headquarter Office",
+                "c2-t": "Direct Phone & WhatsApp",
+                "c3-t": "Official Email",
+                "form-name": "Your Full Name *",
+                "form-phone": "Phone Number *",
+                "form-email": "Email Address",
+                "form-service": "Service Required",
+                "form-msg": "Project Details / Requirements *",
+                "form-submit": "Send Official Request",
+                "footer-desc": "ABM Construction Group is Somalia’s leading engineering and real estate construction firm. Establishing structural standards since 2010.",
+                "f-links": "Quick Links",
+                "f-services": "Services",
+                "f-contact": "Headquarters"
+            },
+            so: {
+                "nav-home": "Hoyga",
+                "nav-about": "Taariikhda & ABM",
+                "nav-services": "Adeegyada",
+                "nav-projects": "500+ Mashruuc",
+                "nav-estimator": "Xisaabiya Inshaa",
+                "nav-contact": "Nala Soo Xiriir",
+                "hero-tag": "Aasaasidii 2010 • Dhisaha Ugu Weyn Soomaaliya",
+                "hero-title-1": "Dhisidda Mustaqbalka",
+                "hero-title-2": "& Bilicsada Soomaaliya",
+                "hero-desc": "Kabadan 16 sano oo khibrad injineernimo ah Muqdisho iyo gobollada oo dhan. Hadafkeenu waa inaan fikradaada u badalno dhismo adag oo casri ah.",
+                "hero-cta-primary": "Eeg 500+ Mashaariicda",
+                "hero-cta-secondary": "Xisaabi Qiimaha Dhismaha",
+                "hero-tagline": "DHISIDDA MUSTAQBAL KA ROON",
+                "stat-projects": "Mashaariic La Dhamaystiray",
+                "stat-years": "Sano oo Khibrad ah",
+                "stat-engineers": "Injineero Sare",
+                "stat-quality": "Tayada & Badbaadada",
+                "hero-cert-title": "Qandaraasle Aqoonsi ISO Qaba",
+                "hero-cert-sub": "Wasaarada Dhoobada & Hawlaha Guud",
+                "about-badge": "Taariikhdeena & Safarka",
+                "about-title": "16 Sano oo dhisidda Muqdisho iyo Gobollada ah",
+                "about-subtitle": "Waxaa la aasaasay 2010-kii, ABM Construction Group waxay ka baxday shirkad yar iyadoo noqotay mid ka mid ah shirkadaha ugu waaweyn Soomaaliya.",
+                "m1-title": "Aasaasidii Muqdisho",
+                "m1-desc": "ABM waxaa loo aasaasay bixinta dhismaha casriga ah iyo injineernimada adag.",
+                "m2-title": "Mashaariicda Ganacsiga",
+                "m2-desc": "Wadashaqeyn lala yeeshay xarumaha ganacsiga iyo dib u dhiska dowladda.",
+                "m3-title": "Dhismaha Guraha & Zoonalka",
+                "m3-desc": "Furida dhismayaasha dhaadheer iyo guryaha dabaqyada ee Muqdisho.",
+                "m4-title": "Wadooyinka & Kaasada",
+                "m4-desc": "Hogaaminta dhismaha wadooyinka laamiga ah iyo nidaamka biyaha.",
+                "m5-title": "Astaanta 500+ Mashruuc",
+                "m5-desc": "U celebration-naynta kabadan 500 oo mashruuc oo si guul ah loo qabtay.",
+                "val1-t": "Xoogga Dhismayaasha",
+                "val1-d": "Waxaan u dhisnaa heerarka caalamiga ah si ay u duraan abid.",
+                "val2-t": "Waqti Ilaalin Strict Ah",
+                "val2-d": "Maamul adag oo hubiya in dhismahaaga lagugu soo wareejiyo waqtigii loogu talagalay.",
+                "val3-t": "Qiimo Cad Oo Waadix Ah",
+                "val3-d": "Xisaab cad oo aan lahayn kharashyo qarsoon oo dib uga soo baxa.",
+                "services-badge": "Adeegyadeena",
+                "services-title": "Adeegyada Buuxa ee Dhismaha & Injineernimada",
+                "services-sub": "Ka bilaabo naqshadaynta ilaa fure u dhiibida guryaha iyo wadooyinka.",
+                "s1-t": "Dhismayaasha Ganacsiga & Dabaqyada",
+                "s1-d": "Dhisidda dabaqyada ganacsiga, hoteellada, iyo xarumaha shaqada.",
+                "s2-t": "Guryaha & Dhulka (Real Estate)",
+                "s2-d": "Naqshadaynta iyo dhisidda meelaha bilicsada leh ee guryaha gaarka ah.",
+                "s3-t": "Naqshadaynta 3D & Injineernimada",
+                "s3-d": "Qaabaynta kombuyuutarka 3D iyo blueprint-ka kahor intaan dhulka la qodin.",
+                "s4-t": "Wadooyinka & Kaabayaasha",
+                "s4-d": "Dhismaha laamiyada, kanaalada biyaha, iyo diyaarinta dhulka.",
+                "s5-t": "Bilicsada Ndaha & Habaynta",
+                "s5-d": "Habaynta bilicsada guryaha, rinjiyeynta, jibsinka, iyo marble-ka.",
+                "s6-t": "Kormeerka Mashaariicda",
+                "s6-d": "Hubinta tayada iyo badbaadada dhismayaasha ganacsiga iyo guryaha.",
+                "learn-more": "La Taso Injineerada",
+                "projects-badge": "Mashaariicdeena Guusha Leh",
+                "projects-title": "Kabadan 500+ Mashruuc Oo La Dhamaystiray",
+                "est-badge": "Xisaabiyaha Degdega Ah",
+                "est-title": "Xisaabi Miisaaniyadaada Dhismaha",
+                "est-desc": "Adoor nooca dhismahaaga iyo baaxada si aad hesho qiimaha qiyaasta ah.",
+                "est-f1": "Wuxuu daboolayaa alaabta, shaqaalaha, iyo faysaskii aasaaska",
+                "est-f2": "Wuxuu ku salaysan yahay suuqa Muqdisho ee 2026",
+                "est-f3": "Waad u badali kartaa codsi rasmi ah",
+                "est-label-type": "1. Dooro Nooca Dhismaha",
+                "est-label-area": "2. Baaxada Dhulka (m²)",
+                "est-label-grade": "3. Tayada Alaabta & Dhameystirka",
+                "est-result-label": "Qiimaha Qiyaasta Ah",
+                "est-btn": "Raso Qiimaha & Nala Soo Xiriir",
+                "contact-badge": "Nala Soo Xiriir",
+                "contact-title": "Kala Xiriir ABM Group Dhismahaaga",
+                "contact-sub": "Kusoo bishead xafiiskeena Muqdisho ama fariin halkan noogu soo dir.",
+                "c1-t": "Xafiiska Dhexe",
+                "c2-t": "Telefoonka & WhatsApp",
+                "c3-t": "E-mailka Rasmiga Ah",
+                "form-name": "Magacaaga Buuxa *",
+                "form-phone": "Nambarka Telefoonka *",
+                "form-email": "Email-kaaga",
+                "form-service": "Adeega Aad U Baahan Tahay",
+                "form-msg": "Faahfaahinta Dhismaha *",
+                "form-submit": "Dir Codsiga Rasmiga Ah",
+                "footer-desc": "ABM Construction Group waa shirkada ugu horeysa dhismaha iyo real estate-ka ee Soomaaliya.",
+                "f-links": "Xiriirada Degdega",
+                "f-services": "Adeegyada",
+                "f-contact": "Xafiiska Dhexe"
+            }
+        };
+
+        let currentLang = 'en';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'so' : 'en';
+            document.getElementById('currentLang').innerText = currentLang.toUpperCase();
+            document.getElementById('currentLangMobile').innerText = currentLang.toUpperCase();
+
+            // Update text elements
+            document.querySelectorAll('[data-i18n]').forEach(elem => {
+                const key = elem.getAttribute('data-i18n');
+                if (translations[currentLang] && translations[currentLang][key]) {
+                    elem.innerText = translations[currentLang][key];
+                }
+            });
+        }
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Interactive Cost Estimator Calculation Logic
+        function calculateEstimate() {
+            const area = parseInt(document.getElementById('areaSlider').value);
+            document.getElementById('areaValue').innerText = area + ' m²';
+
+            // Get selected property type rate per sqm
+            const propTypes = document.getElementsByName('propType');
+            let baseRate = 350; // default base per sqm
+            for (let radio of propTypes) {
+                if (radio.checked) {
+                    if (radio.value === 'residential') baseRate = 350;
+                    if (radio.value === 'commercial') baseRate = 420;
+                    if (radio.value === 'apartment') baseRate = 390;
+                    if (radio.value === 'renovation') baseRate = 180;
+                }
+            }
+
+            // Get selected finish grade multiplier
+            const finishGrades = document.getElementsByName('finishGrade');
+            let multiplier = 1.0;
+            for (let radio of finishGrades) {
+                if (radio.checked) {
+                    if (radio.value === 'standard') multiplier = 0.85;
+                    if (radio.value === 'premium') multiplier = 1.0;
+                    if (radio.value === 'luxury') multiplier = 1.35;
+                }
+            }
+
+            const totalEstimate = Math.round(area * baseRate * multiplier);
+            const formatted = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(totalEstimate);
+            document.getElementById('totalEstimateDisplay').innerText = formatted + ' USD';
+        }
+
+        function applyEstimateToContact() {
+            const area = document.getElementById('areaSlider').value;
+            const estimateText = document.getElementById('totalEstimateDisplay').innerText;
+            
+            // Scroll to contact form
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+            
+            // Auto fill message textarea
+            const msgArea = document.getElementById('contactMessage');
+            msgArea.value = `Hello ABM Team,\n\nI calculated an estimate on your website for a project size of ${area} m². The estimated budget displayed was ${estimateText}.\n\nI would like to schedule an official engineering consultation for this project in Somalia.`;
+            msgArea.focus();
+        }
+
+        // Project Filter Logic
+        function filterProjects(category) {
+            const tabs = document.querySelectorAll('.project-tab');
+            tabs.forEach(tab => {
+                if (tab.getAttribute('data-filter') === category) {
+                    tab.classList.add('bg-brand-green', 'text-white');
+                    tab.classList.remove('bg-white', 'text-slate-700');
+                } else {
+                    tab.classList.remove('bg-brand-green', 'text-white');
+                    tab.classList.add('bg-white', 'text-slate-700');
+                }
+            });
+
+            const cards = document.querySelectorAll('.project-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.classList.contains(category)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Contact Form Submission Handler
+        function submitContactForm(e) {
+            e.preventDefault();
+            const alertBox = document.getElementById('formAlert');
+            const name = document.getElementById('contactName').value;
+            const phone = document.getElementById('contactPhone').value;
+
+            alertBox.className = 'p-4 rounded-xl text-xs font-semibold bg-emerald-100 text-emerald-800 border border-emerald-300 block mb-4';
+            alertBox.innerHTML = `<i class="fa-solid fa-circle-check mr-2"></i> Thank you, <strong>${name}</strong>! Your inquiry has been logged. Our ABM engineering team will reach out at <strong>${phone}</strong> or via WhatsApp shortly.`;
+
+            document.getElementById('contactForm').reset();
+        }
+
+        // Initialize defaults on load
+        window.onload = function() {
+            calculateEstimate();
+        };
+    </script>
+</body>
+</html>
