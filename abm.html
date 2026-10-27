@@ -1300,7 +1300,7 @@
                 });
 
                 const result = await response.json();
-                if (!response.ok || result.success !== 'true') {
+                if (!response.ok || (result.success !== 'true' && result.success !== true)) {
                     throw new Error('The email service did not confirm delivery.');
                 }
 
