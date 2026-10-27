@@ -1255,17 +1255,64 @@
             });
         }
 
-        // Contact Form Submission Handler
-        function submitContactForm(e) {
+        // Contact Form Submission Handler — sends inquiries to the ABM company inbox via FormSubmit.
+        async function submitContactForm(e) {
             e.preventDefault();
+            const form = document.getElementById('contactForm');
             const alertBox = document.getElementById('formAlert');
-            const name = document.getElementById('contactName').value;
-            const phone = document.getElementById('contactPhone').value;
+            const submitButton = form.querySelector('button[type="submit"]');
+            const name = document.getElementById('contactName').value.trim();
+            const phone = document.getElementById('contactPhone').value.trim();
+            const email = document.getElementById('contactEmail').value.trim();
+            const service = document.getElementById('contactService').value;
+            const message = document.getElementById('contactMessage').value.trim();
 
-            alertBox.className = 'p-4 rounded-xl text-xs font-semibold bg-emerald-100 text-emerald-800 border border-emerald-300 block mb-4';
-            alertBox.innerHTML = `<i class="fa-solid fa-circle-check mr-2"></i> Thank you, <strong>${name}</strong>! Your inquiry has been logged. Our ABM engineering team will reach out at <strong>${phone}</strong> or via WhatsApp shortly.`;
+            const showFormMessage = (messageText, success) => {
+                alertBox.className = success
+                    ? 'p-4 rounded-xl text-xs font-semibold bg-emerald-100 text-emerald-800 border border-emerald-300 block mb-4'
+                    : 'p-4 rounded-xl text-xs font-semibold bg-red-100 text-red-800 border border-red-300 block mb-4';
+                alertBox.textContent = messageText;
+                alertBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            };
 
-            document.getElementById('contactForm').reset();
+            submitButton.disabled = true;
+            submitButton.classList.add('opacity-60', 'cursor-not-allowed');
+            submitButton.querySelector('span').textContent = 'Sending Inquiry...';
+            alertBox.className = 'hidden';
+
+            try {
+                const response = await fetch('https://formsubmit.co/ajax/abm.group.construction@gmail.com', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        name,
+                        phone,
+                        email: email || 'Not provided',
+                        service,
+                        message,
+                        _subject: 'New ABM Construction Group Website Inquiry',
+                        _template: 'table',
+                        _honey: ''
+                    })
+                });
+
+                const result = await response.json();
+                if (!response.ok || result.success !== 'true') {
+                    throw new Error('The email service did not confirm delivery.');
+                }
+
+                showFormMessage('Thank you, ' + name + '! Your inquiry has been submitted. The ABM team will contact you soon.', true);
+                form.reset();
+            } catch (error) {
+                showFormMessage('We could not send your inquiry right now. Please email abm.group.construction@gmail.com or call/WhatsApp 077 052 9424.', false);
+            } finally {
+                submitButton.disabled = false;
+                submitButton.classList.remove('opacity-60', 'cursor-not-allowed');
+                submitButton.querySelector('span').textContent = 'Send Official Request';
+            }
         }
 
         // Initialize defaults on load
