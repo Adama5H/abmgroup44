@@ -829,13 +829,32 @@
                         </div>
                     </div>
 
-                    <!-- Mogadishu Map Graphic Mockup -->
-                    <div class="relative h-48 rounded-3xl overflow-hidden border border-slate-200 bg-slate-900 flex items-center justify-center text-center p-4">
-                        <div class="absolute inset-0 opacity-40 bg-[radial-gradient(#10b981_1px,transparent_1px)] [background-size:16px_16px]"></div>
-                        <div class="relative z-10">
-                            <i class="fa-solid fa-map-location-dot text-brand-gold text-3xl mb-2"></i>
-                            <h5 class="text-white font-bold text-sm">Blacksea, Howlwadaag</h5>
-                            <p class="text-xs text-slate-400 mt-0.5">Serving Banadir Region & Nationwide Somalia</p>
+                    <!-- Live Google Maps Location -->
+                    <div class="rounded-3xl overflow-hidden border border-slate-200 bg-white shadow-sm">
+                        <div class="relative h-56 bg-slate-100">
+                            <iframe
+                                title="ABM Construction Group headquarters map"
+                                src="https://www.google.com/maps?q=2.052697,45.31737&z=16&output=embed"
+                                class="absolute inset-0 w-full h-full border-0"
+                                loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                        <div class="p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                            <div>
+                                <h5 class="text-slate-900 font-bold text-sm">ABM Headquarters</h5>
+                                <p class="text-xs text-slate-500 mt-1">Blacksea, Howlwadaag District, Mogadishu</p>
+                                <p class="text-[11px] text-slate-400 mt-1">2.052697, 45.317370</p>
+                            </div>
+                            <a
+                                href="https://www.google.com/maps/dir/?api=1&amp;destination=2.052697%2C45.31737"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-brand-green text-white text-xs font-bold hover:opacity-90 transition-opacity whitespace-nowrap">
+                                <i class="fa-solid fa-diamond-turn-right"></i>
+                                Get Directions
+                            </a>
                         </div>
                     </div>
 
